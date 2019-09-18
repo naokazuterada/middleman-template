@@ -20,7 +20,7 @@ html lang="ja"
     meta name="google-site-verification" content="TODO"
 
     meta property='og:type' content='website'
-    meta property='og:url' content="#{data.og_url || site_url}"
+    meta property='og:url' content="#{site_url}#{current_page.url}"
     meta property='og:title' content=data.title
     meta property='og:site_name' content=data.title
     meta property='og:description' content=data.description
@@ -30,7 +30,7 @@ html lang="ja"
 
     meta name="twitter:site" content='@[TODO]'
     meta name="twitter:title" content=data.title
-    meta name="twitter:url" content="#{site_url}"
+    meta name="twitter:url" content="#{site_url}#{current_page.url}"
     meta name="twitter:description" content=data.description
     meta name="twitter:image" content="#{site_url}#{image_path('/img/share.png')}"
     meta name="twitter:card" content='summary_large_image'
