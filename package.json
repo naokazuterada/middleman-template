@@ -5,7 +5,7 @@
   "main": "script/main.js",
   "scripts": {
     "setup": "rbenv exec bundle install --path=vendor/bundle --binstubs=vendor/bin && npm i",
-    "dev": "rm -rf .tmp/ && rbenv exec bundle exec middleman"
+    "start": "rm -rf .tmp/ && rbenv exec bundle exec middleman"
   },
   "repository": {
     "type": "git",
