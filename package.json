@@ -4,8 +4,8 @@
   "description": "Middleman template files for static web",
   "main": "script/main.js",
   "scripts": {
-    "presetup": "git clone $npm_package_repository_url --branch staging --single-branch build",
     "setup": "rbenv exec bundle install --path=vendor/bundle --binstubs=vendor/bin && npm i",
+    "postsetup": "git clone $npm_package_repository_url --branch staging --single-branch build",
     "start": "rm -rf .tmp/ && rbenv exec bundle exec middleman"
   },
   "repository": {
