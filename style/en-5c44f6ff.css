@@ -1,0 +1,114 @@
+#map .balloon-frame section h2,
+#map .balloon-frame section span {
+  display: block;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+  padding-left: 14px;
+  padding-top: 9px;
+  height: 45px; }
+#map .balloon-frame section.china h2 {
+  width: 173px; }
+#map .balloon-frame section.asean h2 {
+  width: 174px; }
+#map .balloon-frame section.asean span {
+  width: 87px; }
+#map .balloon-frame section.japan h2 {
+  width: 174px; }
+#map .balloon-frame section.japan span {
+  width: 88px; }
+
+.description {
+  padding: 130px 0 100px; }
+
+p {
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0.015em;
+  max-width: 780px;
+  margin: 0 auto; }
+  p:not(:last-child) {
+    padding-bottom: 31px; }
+
+@media (max-width: 1000px) {
+  .description {
+    padding: 34px 32px; }
+
+  p {
+    font-size: 13px;
+    line-height: 1.9em;
+    letter-spacing: 0.03em; }
+
+  #map .balloon-frame section span {
+    font-size: 7.5px;
+    height: 15px;
+    padding: 0;
+    display: flex; }
+  #map .balloon-frame section.china {
+    width: 82px;
+    height: 40px;
+    top: 102px;
+    left: 40px; }
+    #map .balloon-frame section.china span {
+      width: 67px; }
+  #map .balloon-frame section.asean {
+    width: 93px;
+    height: 35px;
+    top: 209px;
+    left: 10px; }
+    #map .balloon-frame section.asean span {
+      width: 77px; }
+  #map .balloon-frame section.japan {
+    width: 83px;
+    height: 37px;
+    top: 78px;
+    right: 28px; }
+    #map .balloon-frame section.japan span {
+      width: 68px; } }
+.boxes a .footer {
+  border: 2px solid #000;
+  border-top: 0;
+  height: 37px; }
+  .boxes a .footer .wrap {
+    display: block; }
+    .boxes a .footer .wrap h2 {
+      margin: 6px 0 0 10px;
+      font-size: 9px;
+      letter-spacing: 0.03em; }
+    .boxes a .footer .wrap span {
+      display: block;
+      color: #979799;
+      margin: 0 0 0 10px;
+      font-size: 7.5px;
+      letter-spacing: 0.03em; }
+  .boxes a .footer .arrow {
+    float: right;
+    margin-left: 10px;
+    border-left: 2px solid #000;
+    width: 37px;
+    height: 100%;
+    background-image: url("/img/arrow-d99ffbd5.png");
+    background-size: 6px auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #d5d3d7;
+    transition-duration: 0.2s; }
+    @media all and (-webkit-min-device-pixel-ratio: 1.5), all and (-o-min-device-pixel-ratio: 3 / 2), all and (min--moz-device-pixel-ratio: 1.5), all and (min-device-pixel-ratio: 1.5) {
+      .boxes a .footer .arrow {
+        background-image: url("/img/arrow@2x-fe98fd8d.png"); } }
+.boxes a:hover .arrow {
+  background-color: #262626;
+  transition-duration: 0.2s;
+  background-image: url("/img/arrow-hover-481e6998.png");
+  background-size: 6px auto;
+  background-position: center;
+  background-repeat: no-repeat; }
+  @media all and (-webkit-min-device-pixel-ratio: 1.5), all and (-o-min-device-pixel-ratio: 3 / 2), all and (min--moz-device-pixel-ratio: 1.5), all and (min-device-pixel-ratio: 1.5) {
+    .boxes a:hover .arrow {
+      background-image: url("/img/arrow-hover@2x-71893a83.png"); } }
+.boxes .japan .logo > img {
+  width: 88px; }
+.boxes .china .logo > img {
+  width: 148px; }
+.boxes .asean .logo > img {
+  width: 162px; }

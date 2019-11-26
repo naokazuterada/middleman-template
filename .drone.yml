@@ -1,24 +1,39 @@
+clone:
+  git:
+    image: plugins/git
+    recursive: false
+    depth: 1
 pipeline:
   deploy:
     image: karappo/dronedeploy:drone-0.8
     # pull: true
     environment:
+      - DEP_REMOTE_IGNORE_FILE=./.depignore
       - DEP_REMOTE_COMMAND=rsync
-      - DEP_REMOTE_PORT=2222
-      - DEP_REMOTE_HOST=ftp-melon-roman.heteml.net
-      - DEP_REMOTE_USER=melon-roman
-      - DEP_REMOTE_INCLUDE_FILE=https://raw.githubusercontent.com/karappo/drone-deploy/drone-compatible/v0.8/include-files/wordpress/.depinc.sh
-      - DEP_REMOTE_IGNORE_FILE=.depignore
-      #
-      - DEP_MASTER_HOST_DIR=/home/users/1/melon-roman/web/melon-roman.com/
-      - DEP_STAGING_HOST_DIR=/home/users/1/melon-roman/web/stg.melon-roman.com/
+      - DEP_REMOTE_HOST=52.175.159.67
+      - DEP_REMOTE_PORT=10022
+      - DEP_REMOTE_INCLUDE_FILE=https://raw.githubusercontent.com/karappo/drone-deploy/drone-compatible/v0.8/include-files/php/.depinc.sh
+
+      - DEP_MASTER_USER=hprod224
+      - DEP_MASTER_HOST_DIR=/home/www/hakuhodo-hill.com/contents/htdocs
+
+      - DEP_STAGING_USER=htest271
+      - DEP_STAGING_HOST_DIR=/home/www/test.hakuhodo-hill.com/contents/htdocs
     commands:
       - echo "$SSH_KEY" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
       - curl https://raw.githubusercontent.com/karappo/drone-deploy/drone-compatible/v0.8/deploy.sh | bash
     secrets: [ ssh_key ]
   notify:
-    image: plugins/slack
+    image: plugins/slack-blame
+    token: xoxp-249440278914-250327066630-736163343893-9e0957f23b7d482c0c04b55c1dc7b8d2
     channel: builds-karappo
-    webhook: https://hooks.slack.com/services/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
-    when:
-      status: [ success, failure ]
+    success_template: |
+      *{{build.status}}*​
+      http://drone.karappo.biz/{{repo.owner}}/{{repo.name}}/{{build.number}}
+      {{build.branch}} branch
+      by {{build.author}}
+    failure_template: |
+      *{{build.status}}*​
+      http://drone.karappo.biz/{{repo.owner}}/{{repo.name}}/{{build.number}}
+      {{build.branch}} branch
+      by {{build.author}}

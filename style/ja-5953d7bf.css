@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "NotoSansJP";
+  font-style: normal;
+  font-weight: 900;
+  src: url("/font/NotoSansJP-Bold-2ae74e96.otf") format("opentype"); }
+body {
+  font-family: "Roboto", "NotoSansJP"; }
+
+.description {
+  padding: 130px 0 118px; }
+
+p {
+  max-width: 760px;
+  font-size: 16px;
+  line-height: 36px;
+  margin: 0 auto;
+  letter-spacing: 0.07em; }
+  p:not(:last-child) {
+    padding-bottom: 35px; }
+
+@media (max-width: 1000px) {
+  .description {
+    padding: 34px 32px; }
+
+  p {
+    font-size: 10px;
+    letter-spacing: 0.09em;
+    line-height: 22px; }
+    p:not(:last-child) {
+      padding-bottom: 2em; } }

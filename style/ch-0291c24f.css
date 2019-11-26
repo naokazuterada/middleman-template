@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "NotoSansCJKtc";
+  font-style: normal;
+  font-weight: 900;
+  src: url("/font/NotoSansCJKtc-Bold-8b3c2c61.otf") format("opentype"); }
+body {
+  font-family: "Roboto", "NotoSansCJKtc";
+  font-weight: 900; }
+
+.description {
+  padding: 128px 0 140px; }
+
+p {
+  font-size: 16px;
+  line-height: 34px;
+  letter-spacing: 0.04em;
+  max-width: 820px;
+  margin: 0 auto; }
+  p:not(:last-child) {
+    padding-bottom: 35px; }
+
+@media (max-width: 1000px) {
+  .description {
+    padding: 34px 32px; }
+
+  p {
+    font-size: 10px;
+    line-height: 22px;
+    letter-spacing: 0.05em; }
+    p:not(:last-child) {
+      padding-bottom: 2em; } }
