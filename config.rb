@@ -78,7 +78,7 @@ configure :build do
   # activate :minify_javascript
 
   before_build do
-    p ':::before_build:::'
+    puts ':::before_build:::'
     # avoid losting old deploy history by force push
     if Dir.exist?('build')
       Dir.chdir 'build'
@@ -86,13 +86,13 @@ configure :build do
       system 'git pull origin'
       Dir.chdir '..'
     else
-      p 'There isn\'t build dir yet, so do nothing.'
+      puts 'There isn\'t build dir yet, so do nothing.'
     end
   end
 
   after_build do
-    p ':::after_build:::'
-    p "delete #{GENERAL_CSS_DIR}"
+    puts ':::after_build:::'
+    puts "delete #{GENERAL_CSS_DIR}"
     system "rm -rf #{GENERAL_CSS_DIR}"
   end
 end
