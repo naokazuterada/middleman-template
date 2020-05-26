@@ -82,8 +82,16 @@ configure :build do
     # avoid losting old deploy history by force push
     if Dir.exist?('build')
       Dir.chdir 'build'
-      system 'git branch -u origin/production production'
-      system 'git pull origin'
+      current_branch = `git rev-parse --abbrev-ref HEAD`
+      current_branch.gsub!(/\n/, '') # pick up only branch name
+      puts "current_branch: #{current_branch}"
+      puts "DEPLOY_BRANCH: #{DEPLOY_BRANCH}"
+      if current_branch == DEPLOY_BRANCH
+        res = system 'git pull origin'
+      else
+        system "git co #{DEPLOY_BRANCH}"
+        system 'git pull origin'
+      end
       Dir.chdir '..'
     else
       puts 'There isn\'t build dir yet, so do nothing.'
