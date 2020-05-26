@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'extensions/pull_before_build'
 
 PRODUCTION_URL = 'https://example.com'
 STAGING_URL = 'https://stg.example.com'
@@ -41,8 +40,6 @@ activate :external_pipeline,
          source: '.tmp/dist',
          latency: 1
 
-activate :pull_before_build
-
 activate :deploy do |deploy|
   deploy.deploy_method = :git
   deploy.build_before = true
@@ -77,6 +74,19 @@ configure :build do
 
   # Minify Javascript on build
   # activate :minify_javascript
+
+  before_build do
+    p ':::before_build:::'
+    # avoid losting old deploy history by force push
+    if Dir.exist?('build')
+      Dir.chdir 'build'
+      system 'git branch -u origin/production production'
+      system 'git pull origin'
+      Dir.chdir '..'
+    else
+      p 'There isn\'t build dir yet, so do nothing.'
+    end
+  end
 
   after_build do
     system 'echo ":::after_build:::"'
