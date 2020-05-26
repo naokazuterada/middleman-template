@@ -77,6 +77,13 @@ configure :build do
 
   # Minify Javascript on build
   # activate :minify_javascript
+
+  after_build do
+    system 'echo ":::after_build:::"'
+    general_css_dir = 'build/style/general'
+    system "echo \"delete #{general_css_dir}\""
+    system "rm -rf #{general_css_dir}"
+  end
 end
 
 ###
