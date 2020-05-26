@@ -4,6 +4,8 @@ PRODUCTION_URL = 'https://example.com'
 STAGING_URL = 'https://stg.example.com'
 
 DeployBranch = 'staging'
+# remove this dir after build
+GENERAL_CSS_DIR = 'build/style/general'
 
 ###
 # Page options, layouts, aliases and proxies
@@ -90,9 +92,8 @@ configure :build do
 
   after_build do
     p ':::after_build:::'
-    general_css_dir = 'build/style/general'
-    p "delete #{general_css_dir}"
-    system "rm -rf #{general_css_dir}"
+    p "delete #{GENERAL_CSS_DIR}"
+    system "rm -rf #{GENERAL_CSS_DIR}"
   end
 end
 
