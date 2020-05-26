@@ -6,7 +6,9 @@
   "scripts": {
     "setup": "rbenv exec bundle install --path=vendor/bundle --binstubs=vendor/bin && npm i",
     "postsetup": "git clone $npm_package_repository_url --branch staging build",
-    "start": "rm -rf .tmp/ && rbenv exec bundle exec middleman"
+    "start": "rm -rf .tmp/ && rbenv exec bundle exec middleman",
+    "build": "rbenv exec bundle exec middleman build",
+    "deploy": "rbenv exec bundle exec middleman deploy"
   },
   "repository": {
     "type": "git",
