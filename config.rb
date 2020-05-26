@@ -89,9 +89,9 @@ configure :build do
   end
 
   after_build do
-    system 'echo ":::after_build:::"'
+    p ':::after_build:::'
     general_css_dir = 'build/style/general'
-    system "echo \"delete #{general_css_dir}\""
+    p "delete #{general_css_dir}"
     system "rm -rf #{general_css_dir}"
   end
 end
