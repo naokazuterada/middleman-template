@@ -3,7 +3,7 @@
 PRODUCTION_URL = 'https://example.com'
 STAGING_URL = 'https://stg.example.com'
 
-DeployBranch = 'staging'
+DEPLOY_BRANCH = 'staging'
 # remove this dir after build
 GENERAL_CSS_DIR = 'build/style/general'
 
@@ -45,7 +45,7 @@ activate :external_pipeline,
 activate :deploy do |deploy|
   deploy.deploy_method = :git
   deploy.build_before = true
-  deploy.branch = DeployBranch
+  deploy.branch = DEPLOY_BRANCH
 end
 
 # Per-page layout changes:
@@ -105,7 +105,7 @@ helpers do
   def site_url
     if config[:environment] == :development
       'http://localhost:4567'
-    elsif DeployBranch == 'staging'
+    elsif DEPLOY_BRANCH == 'staging'
       STAGING_URL
     else
       PRODUCTION_URL
