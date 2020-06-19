@@ -86,12 +86,8 @@ configure :build do
       current_branch.gsub!(/\n/, '') # pick up only branch name
       puts "current_branch: #{current_branch}"
       puts "DEPLOY_BRANCH: #{DEPLOY_BRANCH}"
-      if current_branch == DEPLOY_BRANCH
-        res = system 'git pull origin'
-      else
-        system "git co #{DEPLOY_BRANCH}"
-        system 'git pull origin'
-      end
+      system "git checkout #{DEPLOY_BRANCH}" if current_branch != DEPLOY_BRANCH
+      system 'git pull origin'
       Dir.chdir '..'
     else
       puts 'There isn\'t build dir yet, so do nothing.'
