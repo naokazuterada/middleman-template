@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:karappo/middleman-template.git"
+    "url": "git@github.com:<your-name>/<your-project>.git"
   },
   "author": "Naokazu Terada",
   "license": "MIT",
