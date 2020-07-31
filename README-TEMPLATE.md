@@ -13,7 +13,7 @@
 git clone --recursive git@github.com:karappo/xxxx.git xxxx
 cd xxxx
 yarn setup
-yarn dev
+yarn start
 ```
 
 # 画像圧縮について

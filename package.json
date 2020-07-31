@@ -4,7 +4,7 @@
   "description": "Middleman template files for static web",
   "main": "script/main.js",
   "scripts": {
-    "setup": "rbenv exec bundle install --path=vendor/bundle --binstubs=vendor/bin && npm i",
+    "setup": "rbenv exec bundle install --path=vendor/bundle --binstubs=vendor/bin && yarn",
     "postsetup": "git clone $npm_package_repository_url --branch staging build",
     "start": "rm -rf .tmp/ && rbenv exec bundle exec middleman",
     "build": "rbenv exec bundle exec middleman build",
