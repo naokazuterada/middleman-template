@@ -4,13 +4,6 @@
 
 [![deps][deps]][deps-url]
 
-## Branches
-
-| Branches   | Description |
-|:-----------|:------------|
-| master     | Source files [default branch] |
-| production | Static files build from 'master' branch by [middleman](http://middlemanapp.com/jp/). |
-
 ### Get to start
 
 1. Fork this repository (Rename it `your-project`)
