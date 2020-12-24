@@ -21,7 +21,16 @@ module.exports = {
       {
         test: /\.js[x]?$/,
         exclude: /node_modules|\.tmp|vendor/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            ["@babel/preset-env", {
+              modules: false,
+              useBuiltIns: "usage",
+              corejs: 3
+            }]
+          ]
+        }
       },
       {
         test: /\.json$/,
