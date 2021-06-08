@@ -1,0 +1,41 @@
+on:
+  push:
+    branches: [ production, staging ]
+name: CI
+jobs:
+  check-commit-message:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+      - run: echo "${{ github.event.head_commit.message }}"
+  deploy:
+    runs-on: ubuntu-latest
+    needs: check-commit-message
+    steps:
+      - uses: docker://misterio92/ci-php-node
+      - uses: actions/checkout@v2
+      - name: Override submodules URL
+        run: |
+          echo -e '[url "https://github.com/"]\n  insteadOf = "git@github.com:"' >> ~/.gitconfig
+      - name: Checkout submodules
+        run: |
+          auth_header="$(git config --local --get http.https://github.com/.extraheader)"
+          git submodule sync --recursive
+          git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
+      - uses: docker://karappo/dronedeploy:drone-0.8
+      - name: Deploy
+        run: |
+          mkdir ~/.ssh && chmod 700 ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
+          export DRONE_BRANCH=$(echo ${GITHUB_REF#refs/heads/})
+          curl https://raw.githubusercontent.com/karappo/github-deploy/master/deploy.sh | bash
+        env:
+          DEP_REMOTE_COMMAND: rsync
+          DEP_REMOTE_PORT: 2222
+          DEP_REMOTE_HOST: TODO
+          DEP_REMOTE_USER: TODO
+          DEP_REMOTE_INCLUDE_FILE: https://raw.githubusercontent.com/karappo/github-deploy/master/include-files/php/.depinc.sh
+          #
+          DEP_PRODUCTION_HOST_DIR: /home/users/TODO/middleman-template.com/
+          DEP_STAGING_HOST_DIR: /home/users/TODO/stg.middleman-template.com/
