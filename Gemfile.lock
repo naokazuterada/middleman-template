@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/middleman-contrib/middleman-deploy.git
+  remote: git://github.com/middleman-contrib/middleman-deploy.git
   revision: 4d04b550b4c6888265d83ee9689f41e29dbae535
   branch: master
   specs:
@@ -106,7 +106,7 @@ GEM
     padrino-support (0.13.3.4)
       activesupport (>= 3.1)
     parallel (1.19.2)
-    ptools (1.4.0)
+    ptools (1.4.2)
     public_suffix (4.0.6)
     rack (2.2.3)
     rack-livereload (0.3.17)
