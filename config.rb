@@ -156,9 +156,26 @@ helpers do
     image_tag(src, pc_opt) + image_tag(sp_src, sp_opt)
   end
 
+  # width,heightに小数点を許容するimage_tagの代替
+  # （本家のimage_tagは、svgが来た時にsizeを丸めてしまいデザインがずれる）
+  def image_tag_strict(path, params = {})
+    if path =~ /\.svg$/i
+      image_path = get_image_filepath(path)
+      if File.exists?(image_path)
+        xml = File.open(image_path) { |f| Nokogiri::XML(f) }
+        params.merge!(width: xml.root['width'], height: xml.root['height'])
+      end
+    end
+    image_tag(path, params)
+  end
+
   # テンプレート内などrubyからasset_hash付きのURLを取得する
   def image_url(path)
     asset_url(path, config[:images_dir])
+  end
+
+  def get_image_filepath(path)
+    File.join(config[:source], config[:images_dir], path)
   end
 
   def nl2br(txt)
@@ -194,7 +211,7 @@ helpers do
   # Include svg file in line
   # https://gist.github.com/bitmanic/0047ef8d7eaec0bf31bb
   def inline_svg(relative_image_path, optional_attributes = {})
-    image_path = File.join(config[:source], config[:images_dir], relative_image_path)
+    image_path = get_image_filepath(relative_image_path)
 
     # If the image was found...
     if File.exists?(image_path)

@@ -16,6 +16,10 @@ sass:
   h1
     font-size: 20px
     padding-bottom: 60px
+  p
+    font-size: 16px
+    line-height: 1.7
+    padding-bottom: 30px
   header
     padding: 0 100px
     background-color: rgba(0,0,0,0.5)
@@ -43,7 +47,8 @@ header
     a(href="#pagetop") Top
     a(href="#scroll-margin-1") data-scroll-margin="0"
     a(href="#scroll-margin-2") data-scroll-margin="60"
-    a(href="#svg") Inline SVG
+    a(href="#inline_svg") inline_svg
+    a(href="#image_tag_strict") image_tag_strict
 
 section#firstview
   h1 First View
@@ -56,8 +61,16 @@ section#scroll-margin-2(data-scroll-margin="60")
   h1 Example: Scroll Margin
   p このセクションは data-scroll-margin="60" を指定しているため、headerの高さ（60px）を考慮して、 offset().top + 60px の位置までスクロールする。
 
-section#svg
+section#inline_svg
   h1 Example: Inline SVG
   =inline_svg 'svg-test.svg', data: {bar: 'baz'}
   br
   =inline_svg 'svg-test.svg', class: 'red'
+
+section#image_tag_strict
+  h1 Example: image_tag_strict
+  p
+    | svgをimage_tagで読み込んだ場合に、自動的に付与されるwidthやheightが整数値に丸められてデザイン崩れる問題へに対処したヘルパー関数。<br>
+    | "image_tag" の代わりに "image_tag_strict" を使えば良い。
+  br
+  =image_tag_strict 'svg-test.svg', alt: 'imgタグなのでaltも使えます！'
