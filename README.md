@@ -2,8 +2,6 @@
 
 # Middleman Template
 
-[![deps][deps]][deps-url]
-
 ### Get to start
 
 1. このリポジトリをフォークしてください
