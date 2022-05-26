@@ -2,7 +2,7 @@
 
 # Middleman Template
 
-### Get to start
+### Getting started
 
 1. このリポジトリをフォークしてください
 2. フォークしたリポジトリの名前を `your-project`（任意）に変更
